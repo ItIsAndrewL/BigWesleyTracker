@@ -66,6 +66,7 @@ public class EventImpl implements Event, Comparable<Event> {
 
     @Override
     public int compareTo(Event o) {
-        return _time.compareTo(o.getDateTime());
+        int cmp = _time.compareTo(o.getDateTime());
+        return Integer.compare(0, cmp);
     }
 }

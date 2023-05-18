@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 public class PersonImpl implements Person {
     private final String _fName;
     private final String _lName;
-    private final PriorityQueue<Event> _events; //
+    private final PriorityQueue<Event> _events;
 
     public PersonImpl(String first_name, String last_name) {
         if (first_name == null || last_name == null) {

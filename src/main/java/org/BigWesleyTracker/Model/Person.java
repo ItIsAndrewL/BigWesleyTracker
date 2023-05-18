@@ -59,7 +59,8 @@ public interface Person {
     /** Removes event from the list of attended events
      *
      * @param event event person was actually not at, and updates attendance count
+     * @throws EventNotFoundException if event is not in attended list
      */
-    void removeEvent(Event event);
+    void removeEvent(Event event) throws EventNotFoundException;
 
 }
