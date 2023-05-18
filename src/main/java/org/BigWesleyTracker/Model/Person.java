@@ -1,5 +1,6 @@
 package org.BigWesleyTracker.Model;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface Person {
@@ -29,15 +30,35 @@ public interface Person {
      */
     List<Event> getEvents();
 
-    /** Adds event to the List of events
+    /** Gets the last event in the List of attended events
      *
-     * @param event event person was at
+     * @return latest attended event
+     */
+    Event getLastEvent();
+
+    /** Gets the date of the last attended event
+     *
+     * @return Date of last event
+     */
+    default LocalDateTime getLastEventTime() {
+        return getLastEvent().getDateTime();
+    }
+
+    /** Gets the number of attended events
+     *
+     * @return num of attended events
+     */
+    int getNumEvents();
+
+    /** Adds event to the List of attended events
+     *
+     * @param event event person was at, and updates attendance count
      */
     void addEvent(Event event);
 
-    /** Removes event from the list of events
+    /** Removes event from the list of attended events
      *
-     * @param event event person was actually not at
+     * @param event event person was actually not at, and updates attendance count
      */
     void removeEvent(Event event);
 

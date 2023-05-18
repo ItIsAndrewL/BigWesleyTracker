@@ -33,4 +33,20 @@ public interface Event {
      * @param new_location new location
      */
     void setLocation(String new_location);
+
+    /** Returns attendance of event
+     *
+     * @return num of people present at event
+     */
+    int getAttendance();
+
+    /** Adds one to the current attendance count
+     *
+     */
+    void incrementAttendance();
+
+    /** Subtracts one from the current attendance count
+     *
+     */
+    void decrementAttendance();
 }
