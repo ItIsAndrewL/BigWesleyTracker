@@ -3,10 +3,9 @@ package org.BigWesleyTracker;
 import static org.junit.Assert.*;
 
 import org.BigWesleyTracker.Model.*;
+import org.BigWesleyTracker.Model.Class;
 import org.junit.Test;
 import java.time.LocalDateTime;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 public class AppTest {
@@ -72,6 +71,57 @@ public class AppTest {
 
     @Test
     public void test_StudentImpl() {
-        // TODO: Write Test
+        Student andrew = new StudentImpl("Andrew", "Lockard", Class.FRESHMEN, "Computer Science & Math", null);
+        andrew.promote();
+        assertEquals(Class.SOPHOMORE, andrew.getClassRank());
+        andrew.promote();
+        assertEquals(Class.JUNIOR, andrew.getClassRank());
+        andrew.promote();
+        assertEquals(Class.SENIOR, andrew.getClassRank());
+        andrew.promote();
+        assertEquals(Class.GRADUATE, andrew.getClassRank());
+        try {
+            andrew.promote();
+            fail();
+        } catch (UnsupportedOperationException e) {
+            // pass
+        }
+    }
+
+    @Test
+    public void test_LeaderImpl() {
+        Leader Andrew = new LeaderImpl("Andrew", "Lockard", Class.JUNIOR, "Computer Science",
+                null, "Social Cordinator", "Admin", "UNCgoesCraZy25");
+
+        assertTrue(Andrew.permitLogin("UNCgoesCraZy25"));
+        assertFalse(Andrew.permitLogin("WrongPassword"));
+
+        Andrew.changePassword("UNCgoesCraZy25", "newPassword");
+        assertTrue(Andrew.permitLogin("newPassword"));
+
+        try {
+            Andrew.changePassword("wrongPassword", "notHappening");
+            fail();
+        } catch (IllegalArgumentException e) {
+            // pass
+        }
+    }
+
+    @Test
+    public void test_StaffImpl() {
+        Staff Ryan = new StaffImpl("Ryan", "Spurrier", "Campus Minister", "ClemsonSucks");
+
+        assertTrue(Ryan.permitLogin("ClemsonSucks"));
+        assertFalse(Ryan.permitLogin("ClemsonROCKS"));
+
+        Ryan.changePassword("ClemsonSucks", "newPassword");
+        assertTrue(Ryan.permitLogin("newPassword"));
+
+        try {
+            Ryan.changePassword("wrongPassword", "notHappening");
+            fail();
+        } catch (IllegalArgumentException e) {
+            // pass
+        }
     }
 }

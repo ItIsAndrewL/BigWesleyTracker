@@ -1,8 +1,16 @@
 package org.BigWesleyTracker.Model;
 
 public enum Perms {
-    MANAGE_PERSON,
+    ADD_STUDENT,
+    REMOVE_STUDENT,
+    MANAGE_STUDENT,
+    ADD_LEADER,
+    REMOVE_LEADER,
+    MANAGE_LEADER,
+    ADD_EVENT,
+    REMOVE_EVENT,
     MANAGE_EVENT,
     GENERATE_LUNCH,
-    GENERATE_TEXT
+    GENERATE_TEXT_LIST,
+    ADMIN
 }

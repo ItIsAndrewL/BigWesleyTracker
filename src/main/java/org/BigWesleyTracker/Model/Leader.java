@@ -28,27 +28,22 @@ public interface Leader extends Student {
      */
     void setTeam(String team);
 
-    /** Gets leader's login password
-     * Consider deprecating this
-     *
-     * @return decrypted password
-     */
-    String getPassword();
-
     /** Permits login on correct password
      *
-     * @param entered_password Entered password
+     * @param entered_password entered password
      * @return boolean if it matches saved password
      */
     boolean permitLogin(String entered_password);
 
     /** Changes password
      *
+     * @param old_password old password
      * @param new_password new password
+     * @throws IllegalArgumentException old password does not match saved
      */
-    void changePassword(String new_password);
+    void changePassword(String old_password, String new_password) throws IllegalArgumentException;
 
-    /** gets leader's perms
+    /** gets leader's perms list reference
      *
      * @return list of users perms
      */
@@ -63,7 +58,8 @@ public interface Leader extends Student {
     /** Removes perm
      *
      * @param perm perm to remove
+     * @throws IllegalArgumentException perm not in perms list
      */
-    void removePerm(Perms perm);
+    void removePerm(Perms perm) throws IllegalArgumentException;
 
 }

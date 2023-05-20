@@ -16,7 +16,7 @@ public class StudentImpl extends PersonImpl implements Student {
     }
 
     @Override
-    public Class getStudentClass() {
+    public Class getClassRank() {
         return _class;
     }
 

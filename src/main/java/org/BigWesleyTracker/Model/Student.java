@@ -6,10 +6,13 @@ public interface Student extends Person {
      *
      * @return Class Rank
      */
-    Class getStudentClass();
+    Class getClassRank();
 
-    /** Promotes the student up a class rank **/
-    void promote();
+    /** Promotes the student up a class rank
+     *
+     * @throws UnsupportedOperationException if promotion is invalid
+     */
+    void promote() throws UnsupportedOperationException;
 
     /** Returns the student's major
      *

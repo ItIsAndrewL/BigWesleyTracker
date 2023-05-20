@@ -16,13 +16,6 @@ public interface Staff extends Person {
      */
     void setPosition(String new_position);
 
-    /** Gets staffer's login password
-     * Consider deprecating this
-     *
-     * @return decrypted password
-     */
-    String getPassword();
-
     /** Permits login on correct password
      *
      * @param entered_password Entered password
@@ -33,8 +26,10 @@ public interface Staff extends Person {
     /** Changes password
      *
      * @param new_password new password
+     * @param old_password old password
+     * @throws IllegalArgumentException old password does not match saved
      */
-    void changePassword(String new_password);
+    void changePassword(String old_password, String new_password);
 
     /** gets staffer's perms
      *
